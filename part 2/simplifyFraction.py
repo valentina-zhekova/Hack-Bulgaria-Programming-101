@@ -23,3 +23,13 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# sudo apt-get install ...
+# in cake: git
+# ls -a --> ne barame skritata papka osven ako ne q triem
+# subl .& --->
+# git status
+# git add ....
+# git commit -m "........"
+# git checkout .....
+# git remote add origin ....shema....
