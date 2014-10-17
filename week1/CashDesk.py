@@ -19,6 +19,11 @@ class CashDesk():
             return True
         return False
 
+    def __decompose(number):
+        lst = [100, 50, 20, 10, 5, 2, 1]
+        for amount in lst:
+
+
 my_cash_desk = CashDesk()
 my_cash_desk.take_money({1: 2, 50: 1, 20: 1})
 print(my_cash_desk.total())
