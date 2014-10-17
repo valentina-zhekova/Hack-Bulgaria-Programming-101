@@ -30,23 +30,16 @@ def check_columns(matrix):
 
 
 def check_3x3(matrix):
-    print("33333333333333333333")
     m = []
     for row in matrix:
         m += row
     s = []
-    i = 0  # index
-    flag = True  # to check for wrong 3x3 square
-    while i < len(m):
+    flag = True             # to check for wrong 3x3 square
+    for i in [0, 3, 6, 27, 30, 33, 54, 57, 60]:
         if not flag:
             return False
-        print("for i = %s" % i)
-        print(m[i:i + 3])
-        print(m[i + 9:i + 12])
-        print(m[i + 18:i + 21])
         s = m[i:i + 3] + m[i + 9:i + 12] + m[i + 18:i + 21]
         flag = flag and condition(s)
-        i += 27
         s = []
     return flag
 

@@ -13,7 +13,6 @@ def magic_square(matrix):
 
 
 def check_rows(matrix):
-    #m0 = matrix
     m = list(map(lambda x: sum(x), matrix))
     if len(set(m)) == 1:
         return m[0]

@@ -15,12 +15,9 @@ def spam_condition(number):
 
 
 def spam(n):
-    if n == 1:
-        return "spam"
-    elif n == 0:
+    if n == 0:
         return ""
-    else:
-        return "spam " * (n - 1) + "spam"
+    return "spam " * (n - 1) + "spam"
 
 
 def eggs(number):
@@ -30,15 +27,3 @@ def eggs(number):
         return " and eggs"
     else:
         return ""
-
-
-def main():
-    print("should be \"eggs\": %s" % prepare_meal(5))
-    print("should be \"spam\": %s" % prepare_meal(3))
-    print("should be \"spam spam spam\": %s" % prepare_meal(27))
-    print("should be \"spam and eggs\": %s" % prepare_meal(15))
-    print("should be \"spam spam and eggs\": %s" % prepare_meal(45))
-    print("should be \"\": %s" % prepare_meal(7))
-
-if __name__ == '__main__':
-    main()
