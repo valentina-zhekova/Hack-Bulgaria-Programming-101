@@ -1,9 +1,13 @@
+from weapon import Weapon
+
+
 class Entity:
 
     def __init__(self, name, health):
         self.name = name
         self.health = health
         self._MAX_HEALTH = health
+        self.weapon = None
 
     def get_health(self):
         return self.health
@@ -25,3 +29,22 @@ class Entity:
             return True
         else:
             return False
+
+    def has_weapon(self):
+        return self.weapon is not None
+
+    def equip_weapon(self, weapon):
+        if isinstance(weapon, Weapon):
+            self.weapon = weapon
+        else:
+            raise ValueError
+            print("That's not a weapon")  # order?
+
+    def attack(self):
+        if self.has_weapon():
+            if self.weapon.critical_hit():
+                return self.weapon.damage * 2
+            else:
+                return self.weapon.damage
+        else:
+            return 0

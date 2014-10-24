@@ -1,4 +1,5 @@
 from orc import Orc
+from weapon import Weapon
 import unittest
 
 
@@ -15,6 +16,25 @@ class OrcTests(unittest.TestCase):
         self.assertEqual(2, self.the_orc.berserk_factor)
         self.the_orc.set_berserk_factor(0.55)
         self.assertEqual(1, self.the_orc.berserk_factor)
+
+    def test_orc_attack_no_weapon(self):
+        self.assertEqual(0, self.the_orc.attack())
+
+# that's a stupid test, fix it later!
+    def test_orc_attack(self):
+        weapon = Weapon("spoon", 2, 0.7)
+        self.the_orc.equip_weapon(weapon)
+        critical = False
+        normal = False
+        critical_num = 4 * self.the_orc.berserk_factor
+        normal_num = 2 * self.the_orc.berserk_factor
+        for i in range(0, 1000):
+            critical = critical or (critical_num == self.the_orc.attack())
+            normal = normal or (normal_num == self.the_orc.attack())
+        self.assertTrue(critical)
+        self.assertTrue(normal)
+
+#import pprint
 
 if __name__ == '__main__':
     unittest.main()

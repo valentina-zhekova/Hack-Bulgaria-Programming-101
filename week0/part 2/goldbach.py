@@ -19,15 +19,3 @@ def is_prime(n):
             return False
         divide_by += 1
     return True
-
-
-def main():
-    print("should be [(2, 2)]: %s" % goldbach(4))
-    print("should be [(3, 3)]: %s" % goldbach(6))
-    print("should be [(3, 5)]: %s" % goldbach(8))
-    print("should be [(3, 7), (5, 5)]: %s" % goldbach(10))
-    print("[(3, 97), (11, 89), (17, 83), (29, 71), (41, 59), (47, 53)]: %s"
-          % goldbach(100))
-
-if __name__ == '__main__':
-    main()
