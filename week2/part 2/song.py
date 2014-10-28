@@ -1,3 +1,6 @@
+import json
+
+
 class Song:
 
     MAX_RATING = 5
@@ -20,3 +23,9 @@ class Song:
             error_message = ("Rating should be between {} and {}!")
             raise ValueError(error_message.format(
                 self.MIN_RATING, self.MAX_RATING))
+
+
+class SongEncoder(json.JSONEncoder):
+
+    def default(self, o):
+        return o.__dict__
