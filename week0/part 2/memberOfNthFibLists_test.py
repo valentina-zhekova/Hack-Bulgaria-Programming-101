@@ -16,4 +16,4 @@ class MemberOfNthFibListsTests(unittest.TestCase):
             [7, 11], [2], [11, 7, 2, 2, 7]))
 
 if __name__ == '__main__':
-    main()
+    unittest.main()
