@@ -38,7 +38,7 @@ class Entity:
             self.weapon = weapon
         else:
             raise ValueError
-            print("That's not a weapon")  # order?
+            print("That's not a weapon")
 
     def attack(self):
         if self.has_weapon():

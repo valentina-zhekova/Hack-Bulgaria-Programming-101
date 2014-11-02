@@ -32,9 +32,18 @@ class Fight():
     def simulate_fight(self):
         attacker, deffender = self.get_player_sequence()
 
-        while attacker.is_alive() and deffender.is_alive():
-            damage = attacker.attack()
-            deffender.take_damage(damage)
-            print("{} suffered {} damage and has {} health after the attack of {}".format(
-                deffender.name, damage, deffender.get_health(), attacker.name))
-            attacker, deffender = deffender, attacker
+        if not attacker.has_weapon():
+            print("{} has no weapon and dies!".format(attacker.name))
+
+        elif not deffender.has_weapon():
+            print("{} has no weapon and dies!".format(deffender.name))
+
+        else:
+            while attacker.is_alive() and deffender.is_alive():
+                damage = attacker.attack()
+                deffender.take_damage(damage)
+                print(("{} suffered {} damage and has {} "
+                       "health after the attack of {}").format(
+                    deffender.name, damage, deffender.get_health(),
+                    attacker.name))
+                attacker, deffender = deffender, attacker

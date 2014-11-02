@@ -20,7 +20,7 @@ class OrcTests(unittest.TestCase):
     def test_orc_attack_no_weapon(self):
         self.assertEqual(0, self.the_orc.attack())
 
-# that's a stupid test, fix it later!
+    # that's a stupid test, fix it later!
     def test_orc_attack(self):
         weapon = Weapon("spoon", 2, 0.7)
         self.the_orc.equip_weapon(weapon)
@@ -33,8 +33,6 @@ class OrcTests(unittest.TestCase):
             normal = normal or (normal_num == self.the_orc.attack())
         self.assertTrue(critical)
         self.assertTrue(normal)
-
-#import pprint
 
 if __name__ == '__main__':
     unittest.main()

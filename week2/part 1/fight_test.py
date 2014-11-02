@@ -54,7 +54,5 @@ class FightTests(unittest.TestCase):
         self.fight.simulate_fight()
         self.assertFalse(self.fight.hero.is_alive())
 
-# att, def = def, att
-# get_player_sequence --> (h, o)
 if __name__ == '__main__':
     unittest.main()

@@ -1,11 +1,6 @@
 from entity import Entity
 from weapon import Weapon
-from random import randint
 import unittest
-
-# проверки в конструктура не е добре,
-# правим нова функция и я викаме в конструктура
-# assertRaises(ValueError) .....
 
 
 class EntityTests(unittest.TestCase):
@@ -72,7 +67,7 @@ class EntityTests(unittest.TestCase):
     def test_attack_no_weapon(self):
         self.assertEqual(0, self.the_entity.attack())
 
-# fix this test later; self.assertIn
+    # fix this test later; self.assertIn
     def test_attack(self):
         weapon = Weapon("spoon", 2, 0.7)
         self.the_entity.equip_weapon(weapon)
@@ -83,8 +78,6 @@ class EntityTests(unittest.TestCase):
             normal = normal or (2 == self.the_entity.attack())
         self.assertTrue(critical)
         self.assertTrue(normal)
-# buffer before hard disk
-# file -> write -> close file -> read file
 
 if __name__ == '__main__':
     unittest.main()
