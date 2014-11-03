@@ -1,6 +1,7 @@
 from playlist import Playlist
 from song import Song
 from copy import deepcopy
+from os import remove
 import unittest
 
 
@@ -10,6 +11,8 @@ class PlaylistTests(unittest.TestCase):
         self.playlist = Playlist("The Named Playlist")
         self.song1 = Song("Loosing My Insanity", "DIO", "Magica", 5, 333, 256)
         self.song2 = Song("Last In Line", "DIO", "Last In Line", 4, 222, 191)
+        file = open("test_file", "w")
+        file.close()
 
     def test_init(self):
         self.assertEqual("The Named Playlist", self.playlist.name)
@@ -71,6 +74,16 @@ class PlaylistTests(unittest.TestCase):
         self.playlist.add_song(self.song2)
         self.assertEqual("DIO Loosing My Insanity - 05:33\n" +
                          "DIO Last In Line - 03:42\n", self.playlist.str())
+
+    # I'm not sure how to test them separately
+    def test_save_and_load(self):
+        self.playlist.add_song(self.song1)
+        self.playlist.add_song(self.song2)
+        self.playlist.save("test_file")
+        self.assertEqual(self.playlist.str(), Playlist.load("test_file").str())
+
+    def tearDown(self):
+        remove("test_file")
 
 if __name__ == '__main__':
     unittest.main()

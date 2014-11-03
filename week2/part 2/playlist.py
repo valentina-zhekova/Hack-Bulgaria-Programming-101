@@ -64,6 +64,21 @@ class Playlist:
         file.write(json.dumps(self.__dict__, cls=SongEncoder))
         file.close()
 
+    # help function for load
+    def set_collection_from_json(self, json_collection):
+        result = deepcopy(json_collection)
+        result = list(map(lambda x: self.set_song_from_json(x), result))
+        return result
+
+    # help function for load
+    def set_song_from_json(self, json_song):
+        return Song(json_song['title'],
+                    json_song['artist'],
+                    json_song['album'],
+                    json_song['rating'],
+                    json_song['length'],
+                    json_song['bitrate'])
+
     # This is very stupid implementation of load()
     # but I have problems with better ones
     @staticmethod
@@ -74,40 +89,6 @@ class Playlist:
         json_data = json.loads(content)
         new_playlist = Playlist("")
         new_playlist.name = json_data['name']
-        new_playlist.collection = set_collection_from_json(
+        new_playlist.collection = new_playlist.set_collection_from_json(
             json_data['collection'])
         return new_playlist
-
-
-# help function for load
-def set_collection_from_json(json_collection):
-    result = deepcopy(json_collection)
-    result = list(map(lambda x: set_song_from_json(x), result))
-    return result
-
-
-# help function for load
-def set_song_from_json(json_song):
-    return Song(json_song['title'],
-                json_song['artist'],
-                json_song['album'],
-                json_song['rating'],
-                json_song['length'],
-                json_song['bitrate'])
-
-
-def main():
-
-    playlist = Playlist("The Named Playlist")
-    song1 = Song("Loosing My Insanity", "DIO", "Magica", 5, 333, 256)
-    song2 = Song("Last In Line", "DIO", "Last In Line", 4, 222, 191)
-    playlist.add_song(song1)
-    playlist.add_song(song2)
-    print(playlist.str())
-
-    playlist.save("test_file")
-
-    print(Playlist.load("test_file").str())
-
-if __name__ == '__main__':
-    main()
