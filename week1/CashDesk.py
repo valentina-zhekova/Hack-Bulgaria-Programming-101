@@ -1,4 +1,4 @@
-class CashDesk():
+class CashDesk:
 
     def __init__(self):
         self.money = {100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0, 1: 0}
@@ -15,17 +15,11 @@ class CashDesk():
 
     def can_withdraw_money(self, amount_of_money):
         if self.total() >= amount_of_money:
-            # update money dictionary !!!
-            return True
-        return False
-
-    def __decompose(number):
-        lst = [100, 50, 20, 10, 5, 2, 1]
-        for amount in lst:
-
-
-my_cash_desk = CashDesk()
-my_cash_desk.take_money({1: 2, 50: 1, 20: 1})
-print(my_cash_desk.total())
-print(my_cash_desk.can_withdraw_money(30))
-print(my_cash_desk.can_withdraw_money(70))
+            banknotes = [100, 50, 20, 10, 5, 2, 1]
+            for banknote in banknotes:
+                if self.money[banknote] > 0:
+                    times = min(amount_of_money // banknote,
+                                self.money[banknote])
+                    amount_of_money -= banknote * times
+            return amount_of_money == 0
+        return True
