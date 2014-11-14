@@ -52,19 +52,3 @@ class Store:
 
     def total_income(self):
         return self.total
-
-
-def main():
-    store = Store('Laptop.bg')
-    smartphone = Smartphone('Hack Phone', 500, 820, 7, 10)
-    #laptop = Laptop('HP HackBook', 1000, 1243, 1000, 4)
-    store.load_new_products(smartphone, 2)
-    #store.load_new_products(laptop, 10)
-    #store.list_products(Laptop)
-    print(store.sell_product(smartphone))
-    print(store.sell_product(smartphone))
-    #print(store.sell_product(smartphone))
-    print(store.total_income())
-
-if __name__ == '__main__':
-    main()
