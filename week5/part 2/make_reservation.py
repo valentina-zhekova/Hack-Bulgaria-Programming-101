@@ -6,7 +6,7 @@ from show_movie_projections import *
 HALL_DIMENSION = 10
 TAKEN_SEAT_SIGN = "X"
 FREE_SEAT_SIGN = "."
-GIVE_UP = 'Exit reservation'
+GIVE_UP = 0
 
 
 def make_reservation(database):
